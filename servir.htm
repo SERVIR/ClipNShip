@@ -1,0 +1,163 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <!--  
+ * Copyright 2008 ESRI
+ *
+ * All rights reserved under the copyright laws of the United States
+ * and applicable international laws, treaties, and conventions.
+ *
+ * You may freely redistribute and use this sample code, with or
+ * without modification, provided you include the original copyright
+ * notice and use restrictions.
+ * See use restrictions at http://resources.esri.com/help/9.3/usagerestrictions.htm.
+-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="SHORTCUT ICON" href="favicon.ico" />
+    <title>Clip, Zip & Ship</title>
+    <!--<link href="layout.css" rel="stylesheet" type="text/css" />-->
+    <link href="css/jquery-ui-1.7.1.custom.css" rel="stylesheet" type="text/css" />
+    <link href="css/servir.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/1.6/js/dojo/dijit/themes/tundra/tundra.css">
+
+
+
+</head>
+<body class="tundra">
+    <!--TOPMOST LAYOUT CONTAINER-->
+    <div style="position: absolute; width: 25px; left: 0px; top: 25px; bottom: 25px; background: url('images/bg_left.png') repeat-y scroll 12px 0pt transparent;"></div>
+    <div style="position: absolute; width: 25px; right: 0px; top: 25px; bottom: 25px; background: url('images/bg_right.png') repeat-y scroll 0px 0pt transparent;"></div>
+    <div style="position: absolute; left: 25px; right: 25px; height: 25px; bottom: 0px; background: url('images/bg_bot.png') repeat-x scroll 0px 0pt transparent;"></div>
+    <div style="position: absolute; width: 25px; right: 0px; height: 25px; bottom: 0px; background: url('images/bg_bot_rt.png') no-repeat scroll -12px -12px transparent;"></div>
+    <div style="position: absolute; width: 25px; left: 0px; height: 25px; bottom: 0px; background: url('images/bg_bot_lt.png') no-repeat scroll 12px -12px transparent;"></div>
+    <div style="position: absolute; left: 25px; right: 25px; height: 25px; top: 0px; background: url('images/bg_top.png') repeat-x scroll 0px 2px transparent;"></div>
+    <div style="position: absolute; width: 25px; left: 0px; height: 25px; top: 0px; background: url('images/bg_top_lt.png') no-repeat scroll 12px 12px transparent;"></div>
+    <div style="position: absolute; width: 25px; right: 0px; height: 25px; top: 0px; background: url('images/bg_top_rt.png') no-repeat scroll -12px 12px transparent;"></div>
+    
+    
+    
+    
+    <div style="position: absolute; right: 25px; left: 25px; top: 25px; bottom: 25px;
+        background-color: #ecebeb">
+    </div>
+    <div id="mainWindow" dojotype="dijit.layout.BorderContainer" design="headline" gutters="false"
+        style="height: 100%; padding: 25px 25px 0px 25px; background: none;">
+        <div id="header" dojotype="dijit.layout.ContentPane" region="top" style="background: url(images/head.png) no-repeat scroll 0 0 #EBEAEA;">
+            <a href="http://servirbeta.net" target="_blank" style="height:40px;left:20px;position:absolute;top:10px;width:450px;"></a>
+            <div id="uxInstructTab" onclick="ToggleInstructions('show')" style="cursor:pointer;background: url('images/instructions.png') no-repeat scroll 0pt 0pt transparent;height:27px;position:absolute;right:30px;top:28px;width:140px;">
+            <div id="uxInstructionArrowDown" style="background: url('images/arrow_down.png') no-repeat scroll 0pt 0pt transparent;height:10px;position:absolute;width:10px;top:15px;right:10px;"></div>
+            <div id="uxInstructionArrowUp" style="background: url('images/arrow_up.png') no-repeat scroll 0pt 0pt transparent;height:10px;position:absolute;width:10px;top:15px;right:10px;display:none;"></div>
+            
+            </div>
+            <div id="uxbb" style="background: url('images/bb.png') repeat-x scroll 0 0 transparent;">
+            </div>
+            
+        </div>
+        <div id="uxPopoutTab" onclick="TogglePopout('show')" title="Messages">
+            <div id="uxPopoutArrowRight" style="background: url('images/popout_tab_arrow_right.png') no-repeat scroll 0pt 0pt transparent;height:15px;position:absolute;width:10px;top:16px;right:3px;display:none;"></div>        
+            <div id="uxPopoutArrowLeft" style="background: url('images/popout_tab_arrow_left.png') no-repeat scroll 0pt 0pt transparent;height:15px;position:absolute;width:10px;top:16px;right:3px;"></div>                
+        </div>
+        <div id="uxPopout">
+            <img src='images/loader.gif' id="uxWait" alt='working' style="display: none;" />
+            <span id="messages">To begin, enter your e-mail address.  Next, zoom the map to an area of interest.  Click the Activate Clipping Mode button, and draw an area on the map.</span>
+        </div>
+        <div id="uxInstructions">
+        <span class="instructHead">INSTRUCTIONS</span>
+        <p>
+                This is a clip, ship & zip testbed.</p>
+                <p>
+                This tool lets you download Servir datasets for a custom area that you define by drawing on the map.
+                The datasets are zipped and set aside on the server.  An e-mail is sent to you containing a link to the zip file.
+                Data is currently only available in ESRI shapefile format.
+                </p>
+                
+                <span class="instructHead">HOW TO USE</span> 
+                <p>
+                Start by entering your e-mail address in the textbox.
+                Next, zoom to an area of interest on the map (use shift + mouse drag for rubber band). 
+                </p>
+                <p>Click on the button in step 2, then draw a shaded region on the map.
+                This will be the area for which data is downloaded. Double-click to finish drawing. When finished, a background process
+                will zip the data within the area you drew and send you an e-mail containing a link to the zipped
+                file.
+                </p>
+                
+                <span class="instructHead">NOTE</span>
+                <p>Only layers that are visible will be included in the download.  You can toggle the visibility of individual layers using the Map Contents control.  Check the box next to an item to make it visible, and uncheck it to hide the layer.</p>
+        </div>
+        <div dojotype="dijit.layout.ContentPane" region="left" title="Tools" style="width: 265px;overflow:hidden;">
+            <div id="uxLeftTop" style="background: url(images/left_top_short.png) no-repeat scroll 9px 0 #EBEAEA;
+                height: 240px;">
+                <div style="color: #fff; font-size: 22px; font-weight: bold; padding-bottom: 5px">
+                    Clip, Zip & Ship</div>
+                <div style="color: #fff; width: 200px; padding-bottom: 20px;">
+                    Download SERVIR datasets by following the steps below.</div>
+                <div style="color: #5b5b5b;padding-bottom:8px;">
+                    <span style="color: #163b7d;">STEP 1:</span>&nbsp;Enter your e-mail address:</div>
+                <input type="text" id="email" value="" dojotype="dijit.form.TextBox" style="width:16em;height:18px;" />
+                <br />
+                <br />
+                <div style="color: #5b5b5b; width: 200px;">
+                    <span style="color: #163b7d">STEP 2:</span>&nbsp;Click the button to activate clipping
+                    mode.</div>
+                <br />
+                <a href="javascript://" onclick="validateEmail();"><img id="uxStartDrawing" BORDER=0 onmouseout="StartDrawingMouseOut()" onmouseover="StartDrawingMouseOver()" src="images/btn_StartDrawing.png" alt="Activate Drawing Mode" /></a>
+            </div>
+
+            <!--<div dojotype="dijit.TitlePane" title="Map Contents" id="control_panel" open="true">-->
+            <div id="control_panel" style="bottom:0;margin:0 0 0 10px;position:absolute;top:245px;">
+            <div style="background:url('images/round_top.png') no-repeat scroll 0 0 transparent;height:9px; width:236px;"></div>
+                <div style="background:url('images/round_middle.png') repeat-y scroll 1px 0 transparent;color:#2A7DBC;font-size:20px;padding-left:25px;padding-bottom:10px;font-weight:bold;">
+                    Map Contents</div>
+                <div style="font-size: 11px; font-family: Arial, Helvetica, sans-serif;">
+                    <div id="toc" style="padding-left:15px; overflow-y:auto;padding-left:15px;bottom:22px;position:absolute;top:40px;width:226px;
+                        background-color: white;background:url('images/round_middle.png') repeat-y scroll 1px 0 transparent;" align="left">
+                    </div>
+                    <div style="display:none;background:url('images/round_middle.png') repeat-y scroll 1px 0 transparent;padding-left:25px;bottom:22px;position:absolute;width:236px;">
+                    <br />
+                    Active Layer:
+                    <select name="transparencyList" id="transparencyList" onchange="updateTransparencyLayer(this.value)">
+                        <option value="" selected></option>
+                    </select>
+                    <!--                        &nbsp;<br>
+                        <br>
+                        <input type="button" onclick='zoomToLayer(dojo.byId("transparencyList").value);'
+                            value="Zoom To Layer" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px;">-->
+                    <br />
+                    <br />
+                    Change Layer Transparency:<br>
+                    <div id="slider" dojotype="dijit.form.HorizontalSlider" name="slider" onchange="changeTransparency(arguments[0]/100);"
+                        value="100" maximum="100" minimum="0" pageincrement="100" showbuttons="true"
+                        intermediatechanges="true" slideduration="500" style="width: 200px; height: 20px;">
+                    </div>
+                    </div>
+                    <div style="background:url('images/round_bottom.png') no-repeat scroll 0px 0 transparent;height:14px;bottom:10px;position:absolute;width:236px;"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mapDiv" dojotype="dijit.layout.ContentPane" region="center" style="overflow: hidden;margin-right:10px;margin-bottom:10px;">
+        </div>
+        <div id="footer" dojotype="dijit.layout.ContentPane" region="bottom" style="height: 20px;padding-top:5px;">
+            &copy; 2010 <a style="color:#fff;text-decoration:none;" href="http://www.servir.net" target="_blank">SERVIR</a> All Rights Reserved. | <a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.usgs.gov">USGS</a> &nbsp;<img style="height:12px;position:relative;top:2px;" src="images/usgs_logo.png" alt="USGS logo" /> | Developed by <a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.rcmrd.org/">RCMRD</a> and <a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.spatialdev.com">Spatial Development International</a>
+        </div>
+    </div>
+    <div dojoType="dijit.Dialog" id="uxVerifyDownload" title="Verify" style="width:600px;color:#444;border: solid #ccc 3px;display:none;">
+		Are you sure you want to download data for this area?<br /><br />
+		<input type="button" value="OK" onclick="AcceptDownload()" /><input type="button" value="Cancel" onclick="CancelDownload()"/>
+	</div>
+	<div dojoType="dijit.Dialog" id="uxSizeError" title="Warning" style="width:600px;color:#444;border: solid #ccc 3px;display:none;">
+		The area you drew is too large to process. <br />Please draw a smaller area and try again.<br /><br />
+		<input type="button" value="OK" onclick="ResetDrawingTools()"/>
+	</div>
+	
+</body>
+    <script src="script/jquery-1.3.2.min.js" type="text/javascript"></script>
+
+    <script src="script/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">        djConfig = { parseOnLoad: true }</script>
+
+    <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=1.6"></script>
+    <script src="script/datasources.js" type="text/javascript"></script>
+    <script src="script/map.js" type="text/javascript"></script>
+</html>

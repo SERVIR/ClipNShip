@@ -1,0 +1,251 @@
+html, body, mainWindow {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #aaa;
+    font-family: Verdana, Arial, helvetica, sans-serif;	
+} #heading {
+    
+    font-size: 18pt;
+    font-weight: bold;
+    padding: 10px 0 0px 0;
+    color:#464646;
+} 
+
+
+.link {
+    background-color: #444;
+    cursor: pointer;
+    display: block;
+    color: #fff;
+    font-size: 9pt;
+    width: auto;
+    height: auto;
+    margin: 3px 3px 3px 3px;
+    padding: 2px 5px 2px 5px;
+    text-align: center;
+    border: 1px solid #000;
+} #resultsDiv table tr {
+    cursor: pointer;
+    font-size: 9pt;
+} #resultsDiv table td {
+    border-top: 1px solid #ccc;
+} .swatch {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    vertical-align: middle;
+} .helptable td {
+    background-color: #d2d0c3;
+    padding: 7px;
+    line-height: 1.4;
+    vertical-align: top;
+}
+
+td.heading {
+    font-size: 1em;
+    vertical-align: top;
+    font-weight: bold;
+    text-align: center;
+} .resultsTable {
+    width: 100%;
+    border: 1px solid #ccc;
+} .resultsTable tr {
+    background-color: #eee;
+} .resultsTable th {
+    background-color: #fff;
+} .highlight {
+    background-color: #555;
+    color: #fff;
+} .cancel {
+    background-color: #fff;
+    color: #444;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #444;
+    font-size: 9pt;
+} .td0, .td1, .td2, .td3 {
+    text-align: right;
+}
+
+.dijitTab{
+	color:#444;
+}
+/*text-decoration:underline;*/
+.dijitTabChecked {
+	color:#000;	
+	
+}
+
+#disclaimer_underlay {
+    background-color: #000;
+}
+#about_underlay {
+    background-color: #000;
+}
+
+.download {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.datadisclaimer {
+	margin-top:10px;
+	display:block;
+	font-size: 9pt;
+	color:#555;	
+}
+
+
+
+
+
+html, form, body, #wrap{
+  height:100%;
+  background-color:#f4f5f5;
+}
+
+#wrap {height: auto; min-height: 100%;}
+
+.foottext{
+  top:-2px;
+  left:20px;
+  position:relative;
+  font-weight:bold;
+  font-size:10px;
+  color:#ffffff;
+}
+
+.footer{	
+    height:20px; 
+    margin-top:-20px;
+    width:100%;
+    position:relative;
+    z-index:300;
+    clear:both;
+    background: #333333 url(images/topdivider.png) repeat-x bottom left;
+}
+
+#wrapperHeader 
+{
+	height: 85px;
+	padding:0px;
+	position: relative;
+	background: url('images/topbg1px.png');
+    background-repeat: repeat-x;
+    background-position: center top;
+}
+
+#uxLogo{
+    padding-left:20px;
+    top:1px;
+    float:left;
+    position:relative;
+}
+
+/* Top Navigation Bar */
+#headerNav
+{
+    height: 24px;
+    float:right;
+    margin-top:20px;
+    vertical-align: middle;
+    display:none;
+}
+
+
+#wrapperThinStrip
+{
+	margin:0px 0px 5px 0px;
+	height: 5px;
+	z-index: 0;
+	background: #f4f5f5;
+}
+
+.left-pipe{
+        border-left: solid 1px #bcbec0;
+}
+
+.right-pipe{
+        border-right: solid 1px #bcbec0;
+}
+
+a.navClass
+{
+	color:#FFFFFF;
+	display:inline-block;
+	font-size:18px;
+	text-align:center;
+	text-decoration:none;
+	width:80px;
+	position:relative;
+	top:-15px;
+}
+
+a.navClass:hover
+{
+	color: #5496c9;	
+}
+
+a.navClass.active
+{
+	color: #5496c9;	
+}
+
+.navbarDivider
+{
+	display:inline;	
+	height:46px;
+	width:3px;
+}
+
+#headerBranding
+{
+	color:#FFFFFF;
+	float:left;
+	font-family:Calibri,Arial,Sans-Serif;
+	font-size:30px;
+	margin-left:40px;
+	margin-top:22px;
+}
+
+.rtw
+{
+	min-width:300px;
+}
+
+.description
+{
+	background-color:#4d6a7a;
+	height:24px;
+	right:5px;
+	left:5px;
+	color:#ffffff;
+	padding-left:5px;
+	padding-top:3px;
+	font-size:1.0em;
+	color: #fff;
+	font-weight:normal;
+}
+
+.style1 {
+	color: #66CC33;
+	font-size: 16px;
+}
+.style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+/*
+.resultsTable td
+{
+	background-color:#B9B6A2;	
+}
+
+*/

@@ -1,0 +1,92 @@
+﻿html, body, mainWindow {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #2f2f4f;
+    font-family: Arial, helvetica, sans-serif;	
+}
+
+#header {
+  height:69px;
+  padding:0;
+  border:none;
+  margin-bottom:10px;
+}
+
+#uxbb
+{
+height:14px;
+position:relative;
+top:55px;
+}
+
+#uxLeftTop
+{
+	font-size:12px;
+	height:250px;
+	padding:5px 0 0 27px;
+}
+
+#footer {
+    font-size: 9pt;
+	margin: 0px;
+    color:#fff;
+}
+
+#uxInstructions
+{
+background:url("../images/instructions_back.png") no-repeat scroll center 0 #2368A8;
+color:#4A4A4A;
+display:none;
+font-size:11px;
+height:420px;
+left:auto;
+padding:20px 25px 0;
+position:absolute;
+right:35px;
+top:94px;
+width:290px;
+z-index:3;
+}
+
+#uxPopout
+{
+background:url("../images/popout.png") no-repeat scroll 0 0 transparent;
+height:110px;
+position:absolute;
+right:25px;
+bottom:75px;
+width:150px;
+z-index:3;	
+font-size:11px;
+padding:10px;
+display:none;
+}
+
+#uxPopoutTab
+{
+background:url("../images/popout_tab.png") no-repeat scroll 0 0 transparent;
+bottom:145px;
+height:50px;
+position:absolute;
+right:35px;
+width:22px;
+z-index:3;
+cursor:pointer;
+}
+
+#uxWait
+{
+position:relative;
+top:5px;	
+}
+
+.instructHead
+{
+	color:#163b7d;
+	font-size:14px;
+}
